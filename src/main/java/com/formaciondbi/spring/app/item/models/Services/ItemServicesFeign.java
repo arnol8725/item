@@ -4,10 +4,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
 
 import com.formaciondbi.spring.app.item.clientes.ProductoClienteRest;
 import com.formaciondbi.spring.app.item.models.Item;
-
+@Service("servicesFeign")
+@Primary
 public class ItemServicesFeign implements ItemServices {
 	
 	@Autowired
@@ -22,7 +25,7 @@ public class ItemServicesFeign implements ItemServices {
 	@Override
 	public Item findById(Long id, Integer cantidad) {
 		// TODO Auto-generated method stub
-		return null;
+		return new Item(cleinteFeign.detalli(id) ,cantidad);
 	}
 
 }

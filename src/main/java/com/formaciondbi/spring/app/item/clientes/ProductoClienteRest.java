@@ -9,10 +9,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.formaciondbi.spring.app.item.models.Item;
 import com.formaciondbi.spring.app.item.models.Producto;
 
-@FeignClient(name="servivio-producto",url="localhost:8061")
+//@FeignClient(name="servivio-producto",url="localhost:8061")
+@FeignClient(name="servivio-producto")
 public interface ProductoClienteRest {
 	@GetMapping("/listar")
 	public List<Producto> listar();
+	
 	@GetMapping("/ver/{id}")
-	private Producto detalli(@PathVariable Long id)
+	public Producto detalli(@PathVariable Long id);
+	
 }
